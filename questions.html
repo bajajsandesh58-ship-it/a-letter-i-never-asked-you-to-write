@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Question 1 ❤️</title>
+
+<title>Your Heart ❤️</title>
 
 <style>
 body{
@@ -19,7 +20,8 @@ text-align:center;
 }
 
 .card{
-max-width:700px;
+width:90%;
+max-width:650px;
 padding:30px;
 }
 
@@ -27,9 +29,13 @@ h1{
 color:#ff8fb1;
 }
 
+#progress{
+color:#ffd4ea;
+}
+
 textarea{
 width:90%;
-height:150px;
+height:140px;
 border-radius:15px;
 padding:15px;
 font-size:16px;
@@ -46,6 +52,10 @@ color:white;
 font-size:18px;
 cursor:pointer;
 }
+
+.heart{
+font-size:25px;
+}
 </style>
 
 </head>
@@ -54,23 +64,97 @@ cursor:pointer;
 
 <div class="card">
 
-<h1>Question 1 ❤️</h1>
+<div class="heart">❤️</div>
 
-<p>
-Whenever the thought suddenly comes into your mind,
-"I have a girlfriend,"
-what is the very first feeling that appears in your heart?
-</p>
+<h1 id="progress">Question 1/10</h1>
 
-<textarea placeholder="Write your answer here..."></textarea>
+<p id="question"></p>
+
+<textarea id="answer" placeholder="Write your answer here..."></textarea>
 
 <br>
 
-<button onclick="alert('Question 2 will be added next ❤️')">
-Next ❤️
-</button>
+<button onclick="nextQuestion()">Next ❤️</button>
 
 </div>
+
+
+<script>
+
+const questions = [
+
+"Whenever the thought suddenly comes into your mind, 'I have a girlfriend', what is the very first feeling that appears in your heart?",
+
+"If someone asks you, 'Who is she?', how would you describe me beyond just my name?",
+
+"What is one thing about me that makes you feel lucky to have me?",
+
+"Do you feel I am still the right partner for you? Why?",
+
+"Have you ever felt something was not right between us but didn't tell me? What was it?",
+
+"When you imagine your future, how far do you see me with you?",
+
+"What is one memory with me that you never want to forget?",
+
+"What is something you think I do that makes you feel loved?",
+
+"What is one thing you want us to improve together as a couple?",
+
+"After everything, what do I truly mean to you?"
+];
+
+let current = 0;
+
+function showQuestion(){
+
+document.getElementById("progress").innerHTML =
+"Question " + (current+1) + "/10 ❤️";
+
+document.getElementById("question").innerHTML =
+questions[current];
+
+document.getElementById("answer").value="";
+
+}
+
+
+function nextQuestion(){
+
+let answer = document.getElementById("answer").value;
+
+if(answer.trim()==""){
+alert("Please write your answer first ❤️");
+return;
+}
+
+current++;
+
+if(current < questions.length){
+
+showQuestion();
+
+}
+
+else{
+
+document.body.innerHTML = `
+<div class="card">
+<h1>Thank You ❤️</h1>
+<p>
+Thank you for opening your heart.<br><br>
+Your answers mean more than words.
+</p>
+</div>
+`;
+
+}
+
+}
+
+showQuestion();
+
+</script>
 
 </body>
 </html>
